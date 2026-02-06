@@ -1,0 +1,197 @@
+Microsoft Windows [Version 10.0.26200.7623]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\shrav>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| shravan            |
+| sys                |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> use shravan;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_shravan |
++-------------------+
+| actors            |
+| movies            |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from actors;
++-----------+-----------+--------+---------+
+| Firstname | lastname  | Gender | Network |
++-----------+-----------+--------+---------+
+| Johnny    | Depp      | Male   |     200 |
+| Chris     | Hemsworth | Male   |     400 |
+| Scarlett  | Johnson   | Female |     500 |
+| Chris     | Evans     | Male   |     700 |
+| Brie      | Larson    | Female |     650 |
+| Paul      | Rudd      | Male   |     150 |
+| Chadwick  | Boseman   | Male   |     400 |
++-----------+-----------+--------+---------+
+7 rows in set (0.03 sec)
+
+mysql> insert into actors(firstname,lastname,gender,network) values ("khesari lal","Yadav","Male",600);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from actors;
++-------------+-----------+--------+---------+
+| Firstname   | lastname  | Gender | Network |
++-------------+-----------+--------+---------+
+| Johnny      | Depp      | Male   |     200 |
+| Chris       | Hemsworth | Male   |     400 |
+| Scarlett    | Johnson   | Female |     500 |
+| Chris       | Evans     | Male   |     700 |
+| Brie        | Larson    | Female |     650 |
+| Paul        | Rudd      | Male   |     150 |
+| Chadwick    | Boseman   | Male   |     400 |
+| khesari lal | Yadav     | Male   |     600 |
++-------------+-----------+--------+---------+
+8 rows in set (0.00 sec)
+
+mysql> insert into actors(firstname,lastname,gender,network) values ("Ravi kishan","Yadav","Male",550),("Powan","Singh","Male",500);
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from actors;
++-------------+-----------+--------+---------+
+| Firstname   | lastname  | Gender | Network |
++-------------+-----------+--------+---------+
+| Johnny      | Depp      | Male   |     200 |
+| Chris       | Hemsworth | Male   |     400 |
+| Scarlett    | Johnson   | Female |     500 |
+| Chris       | Evans     | Male   |     700 |
+| Brie        | Larson    | Female |     650 |
+| Paul        | Rudd      | Male   |     150 |
+| Chadwick    | Boseman   | Male   |     400 |
+| khesari lal | Yadav     | Male   |     600 |
+| Ravi kishan | Yadav     | Male   |     550 |
+| Powan       | Singh     | Male   |     500 |
++-------------+-----------+--------+---------+
+10 rows in set (0.00 sec)
+
+mysql> update actors set firstname="kheaarilal" whrer network=600;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'whrer network=600' at line 1
+mysql> UPDATE actors SET Firstname="kheaarilal" WHERE Network=600;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from actors;
++-------------+-----------+--------+---------+
+| Firstname   | lastname  | Gender | Network |
++-------------+-----------+--------+---------+
+| Johnny      | Depp      | Male   |     200 |
+| Chris       | Hemsworth | Male   |     400 |
+| Scarlett    | Johnson   | Female |     500 |
+| Chris       | Evans     | Male   |     700 |
+| Brie        | Larson    | Female |     650 |
+| Paul        | Rudd      | Male   |     150 |
+| Chadwick    | Boseman   | Male   |     400 |
+| kheaarilal  | Yadav     | Male   |     600 |
+| Ravi kishan | Yadav     | Male   |     550 |
+| Powan       | Singh     | Male   |     500 |
++-------------+-----------+--------+---------+
+10 rows in set (0.00 sec)
+
+mysql> UPDATE actors SET Firstname="Ravikishan" WHERE Network=550;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from actors;
++------------+-----------+--------+---------+
+| Firstname  | lastname  | Gender | Network |
++------------+-----------+--------+---------+
+| Johnny     | Depp      | Male   |     200 |
+| Chris      | Hemsworth | Male   |     400 |
+| Scarlett   | Johnson   | Female |     500 |
+| Chris      | Evans     | Male   |     700 |
+| Brie       | Larson    | Female |     650 |
+| Paul       | Rudd      | Male   |     150 |
+| Chadwick   | Boseman   | Male   |     400 |
+| kheaarilal | Yadav     | Male   |     600 |
+| Ravikishan | Yadav     | Male   |     550 |
+| Powan      | Singh     | Male   |     500 |
++------------+-----------+--------+---------+
+10 rows in set (0.00 sec)
+
+mysql> \!cls
+ERROR:
+Usage: \! shell-command
+mysql> delete from actors where firstname="powan";
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select *from actors;
++------------+-----------+--------+---------+
+| Firstname  | lastname  | Gender | Network |
++------------+-----------+--------+---------+
+| Johnny     | Depp      | Male   |     200 |
+| Chris      | Hemsworth | Male   |     400 |
+| Scarlett   | Johnson   | Female |     500 |
+| Chris      | Evans     | Male   |     700 |
+| Brie       | Larson    | Female |     650 |
+| Paul       | Rudd      | Male   |     150 |
+| Chadwick   | Boseman   | Male   |     400 |
+| kheaarilal | Yadav     | Male   |     600 |
+| Ravikishan | Yadav     | Male   |     550 |
++------------+-----------+--------+---------+
+9 rows in set (0.00 sec)
+
+mysql> delete from actors where firstname="chris";
+Query OK, 2 rows affected (0.02 sec)
+
+mysql> select *from actors;
++------------+----------+--------+---------+
+| Firstname  | lastname | Gender | Network |
++------------+----------+--------+---------+
+| Johnny     | Depp     | Male   |     200 |
+| Scarlett   | Johnson  | Female |     500 |
+| Brie       | Larson   | Female |     650 |
+| Paul       | Rudd     | Male   |     150 |
+| Chadwick   | Boseman  | Male   |     400 |
+| kheaarilal | Yadav    | Male   |     600 |
+| Ravikishan | Yadav    | Male   |     550 |
++------------+----------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> insert into actors(firstname,lastname,gender,network) values ("chris","Evans","Male",700),("chris","Hemsworth","Male",400),("Powan","Singh","Male",500);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select *from actors;
++------------+-----------+--------+---------+
+| Firstname  | lastname  | Gender | Network |
++------------+-----------+--------+---------+
+| Johnny     | Depp      | Male   |     200 |
+| Scarlett   | Johnson   | Female |     500 |
+| Brie       | Larson    | Female |     650 |
+| Paul       | Rudd      | Male   |     150 |
+| Chadwick   | Boseman   | Male   |     400 |
+| kheaarilal | Yadav     | Male   |     600 |
+| Ravikishan | Yadav     | Male   |     550 |
+| chris      | Evans     | Male   |     700 |
+| chris      | Hemsworth | Male   |     400 |
+| Powan      | Singh     | Male   |     500 |
++------------+-----------+--------+---------+
+10 rows in set (0.00 sec)
