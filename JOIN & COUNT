@@ -1,0 +1,1664 @@
+
+C:\Users\shrav>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 23
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| shravan            |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use lco_films;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_lco_films |
++---------------------+
+| actor               |
+| address             |
+| category            |
+| city                |
+| country             |
+| film                |
+| film_actor          |
+| film_category       |
+| language            |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select *from actor limit 30;
++----------+------------+--------------+------------+---------------------+
+| actor_id | first_name | last_name    | address_id | last_update         |
++----------+------------+--------------+------------+---------------------+
+|        1 | PENELOPE   | GUINESS      |          1 | 2020-07-30 18:07:51 |
+|        2 | NICK       | WAHLBERG     |          4 | 2020-07-30 18:07:51 |
+|        3 | ED         | CHASE        |          2 | 2020-07-30 18:07:51 |
+|        4 | JENNIFER   | DAVIS        |          3 | 2020-07-30 18:07:51 |
+|        5 | JOHNNY     | LOLLOBRIGIDA |          5 | 2020-07-30 18:07:51 |
+|        6 | BETTE      | NICHOLSON    |          7 | 2020-07-30 18:07:51 |
+|        7 | GRACE      | MOSTEL       |          6 | 2020-07-30 18:07:51 |
+|        8 | MATTHEW    | JOHANSSON    |          8 | 2020-07-30 18:07:51 |
+|        9 | JOE        | SWANK        |         10 | 2020-07-30 18:07:51 |
+|       10 | CHRISTIAN  | GABLE        |          9 | 2020-07-30 18:07:51 |
+|       11 | ZERO       | CAGE         |         11 | 2020-07-30 18:07:51 |
+|       12 | KARL       | BERRY        |         13 | 2020-07-30 18:07:51 |
+|       13 | UMA        | WOOD         |        110 | 2020-07-30 18:07:51 |
+|       14 | VIVIEN     | BERGEN       |         25 | 2020-07-30 18:07:51 |
+|       15 | CUBA       | OLIVIER      |         40 | 2020-07-30 18:07:51 |
+|       16 | FRED       | COSTNER      |         65 | 2020-07-30 18:07:51 |
+|       17 | HELEN      | VOIGHT       |         77 | 2020-07-30 18:07:51 |
+|       18 | DAN        | TORN         |        414 | 2020-07-30 18:07:51 |
+|       19 | BOB        | FAWCETT      |        125 | 2020-07-30 18:07:51 |
+|       20 | LUCILLE    | TRACY        |         80 | 2020-07-30 18:07:51 |
+|       21 | KIRSTEN    | PALTROW      |         99 | 2020-07-30 18:07:51 |
+|       22 | ELVIS      | MARX         |         44 | 2020-07-30 18:07:51 |
+|       23 | SANDRA     | KILMER       |         33 | 2020-07-30 18:09:05 |
+|       24 | CAMERON    | STREEP       |         63 | 2020-07-30 18:07:51 |
+|       25 | KEVIN      | BLOOM        |         67 | 2020-07-30 18:09:44 |
+|       26 | RIP        | CRAWFORD     |         46 | 2020-07-30 18:07:51 |
+|       27 | JULIA      | MCQUEEN      |         47 | 2020-07-30 18:07:51 |
+|       28 | WOODY      | HOFFMAN      |         57 | 2020-07-30 18:07:51 |
+|       29 | ALEC       | WAYNE        |         74 | 2020-07-30 18:07:51 |
+|       30 | SANDRA     | PECK         |         75 | 2020-07-30 18:07:51 |
++----------+------------+--------------+------------+---------------------+
+30 rows in set (0.03 sec)
+
+mysql> select * from address limit 10;
++------------+---------------------------------+----------+------------+---------+-------------+--------------+---------------------+
+| address_id | address                         | address2 | district   | city_id | postal_code | phone        | last_update         |
++------------+---------------------------------+----------+------------+---------+-------------+--------------+---------------------+
+|          1 | 47 MySakila Drive               | NULL     | Alberta    |     300 |             |              | 2020-07-30 18:07:51 |
+|          2 | 28 MySQL Boulevard              | NULL     | QLD        |     576 |             |              | 2020-07-30 18:07:51 |
+|          3 | 23 Workhaven Lane               | NULL     | Alberta    |     300 |             | 14033335568  | 2020-07-30 18:07:51 |
+|          4 | 1411 Lillydale Drive            | NULL     | QLD        |     576 |             | 6172235589   | 2020-07-30 18:07:51 |
+|          5 | 1913 Hanoi Way                  |          | Nagasaki   |     463 | 35200       | 28303384290  | 2020-07-30 18:07:51 |
+|          6 | 1121 Loja Avenue                |          | California |     449 | 17886       | 838635286649 | 2020-07-30 18:07:51 |
+|          7 | 692 Joliet Street               |          | Attika     |      38 | 83579       | 448477190408 | 2020-07-30 18:07:51 |
+|          8 | 1566 Inegl Manor                |          | Mandalay   |     349 | 53561       | 705814003527 | 2020-07-30 18:07:51 |
+|          9 | 53 Idfu Parkway                 |          | Nantou     |     361 | 42399       | 10655648674  | 2020-07-30 18:07:51 |
+|         10 | 1795 Santiago de Compostela Way |          | Texas      |     295 | 18743       | 860452626434 | 2020-07-30 18:07:51 |
++------------+---------------------------------+----------+------------+---------+-------------+--------------+---------------------+
+10 rows in set (0.02 sec)
+
+
+mysql> select first_name,last_name,address,district,phone from actor join address on actor.address_id = address.address_id limit 10;
++------------+--------------+---------------------------------+------------+--------------+
+| first_name | last_name    | address                         | district   | phone        |
++------------+--------------+---------------------------------+------------+--------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               | Alberta    |              |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            | QLD        | 6172235589   |
+| ED         | CHASE        | 28 MySQL Boulevard              | QLD        |              |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               | Alberta    | 14033335568  |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  | Nagasaki   | 28303384290  |
+| BETTE      | NICHOLSON    | 692 Joliet Street               | Attika     | 448477190408 |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                | California | 838635286649 |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                | Mandalay   | 705814003527 |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way | Texas      | 860452626434 |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 | Nantou     | 10655648674  |
++------------+--------------+---------------------------------+------------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from city limit 10;
++---------+--------------------+------------+---------------------+
+| city_id | city               | country_id | last_update         |
++---------+--------------------+------------+---------------------+
+|       1 | A Corua (La Corua) |         87 | 2020-07-30 18:07:52 |
+|       2 | Abha               |         82 | 2020-07-30 18:07:52 |
+|       3 | Abu Dhabi          |        101 | 2020-07-30 18:07:52 |
+|       4 | Acua               |         60 | 2020-07-30 18:07:52 |
+|       5 | Adana              |         97 | 2020-07-30 18:07:52 |
+|       6 | Addis Abeba        |         31 | 2020-07-30 18:07:52 |
+|       7 | Aden               |        107 | 2020-07-30 18:07:52 |
+|       8 | Adoni              |         44 | 2020-07-30 18:07:52 |
+|       9 | Ahmadnagar         |         44 | 2020-07-30 18:07:52 |
+|      10 | Akishima           |         50 | 2020-07-30 18:07:52 |
++---------+--------------------+------------+---------------------+
+10 rows in set (0.02 sec)
+
+mysql> select first_name,last_name,address,district,city,phone from actor join address on actor.address_id = address.address_id on address.city_id=city.city_id limit 10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on address.city_id=city.city_id limit 10' at line 1
+mysql> select first_name,last_name,address,district,city,phone from actor join address on actor.address_id = address.address_id join on address.city_id=city.city_id limit 10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on address.city_id=city.city_id limit 10' at line 1
+mysql> SELECT first_name, last_name, address, district, city, phone
+    -> FROM actor
+    -> JOIN address ON actor.address_id = address.address_id
+    -> JOIN city ON address.city_id = city.city_id
+    -> LIMIT 10;
++------------+--------------+---------------------------------+------------+----------------+--------------+
+| first_name | last_name    | address                         | district   | city           | phone        |
++------------+--------------+---------------------------------+------------+----------------+--------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               | Alberta    | Lethbridge     |              |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            | QLD        | Woodridge      | 6172235589   |
+| ED         | CHASE        | 28 MySQL Boulevard              | QLD        | Woodridge      |              |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               | Alberta    | Lethbridge     | 14033335568  |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  | Nagasaki   | Sasebo         | 28303384290  |
+| BETTE      | NICHOLSON    | 692 Joliet Street               | Attika     | Athenai        | 448477190408 |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                | California | San Bernardino | 838635286649 |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                | Mandalay   | Myingyan       | 705814003527 |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way | Texas      | Laredo         | 860452626434 |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 | Nantou     | Nantou         | 10655648674  |
++------------+--------------+---------------------------------+------------+----------------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select first_name, last_name, address from actor left outer join address on actor.address_id = address.address_id limit 10;
++------------+--------------+---------------------------------+
+| first_name | last_name    | address                         |
++------------+--------------+---------------------------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            |
+| ED         | CHASE        | 28 MySQL Boulevard              |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  |
+| BETTE      | NICHOLSON    | 692 Joliet Street               |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 |
++------------+--------------+---------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select first_name, last_name, address,district,phone from actor right outer join address on actor.address_id = address.address_id limit 10;
++------------+--------------+---------------------------------+------------+--------------+
+| first_name | last_name    | address                         | district   | phone        |
++------------+--------------+---------------------------------+------------+--------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               | Alberta    |              |
+| ED         | CHASE        | 28 MySQL Boulevard              | QLD        |              |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               | Alberta    | 14033335568  |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            | QLD        | 6172235589   |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  | Nagasaki   | 28303384290  |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                | California | 838635286649 |
+| BETTE      | NICHOLSON    | 692 Joliet Street               | Attika     | 448477190408 |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                | Mandalay   | 705814003527 |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 | Nantou     | 10655648674  |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way | Texas      | 860452626434 |
++------------+--------------+---------------------------------+------------+--------------+
+10 rows in set (0.01 sec)
+
+mysql> select first_name, last_name, address,district,city, country_id, phone from actor right outer join address on actor.address_id = address.address_id join city on address.city_id = city.city_id limit 10;
++------------+--------------+---------------------------------+------------+----------------+------------+--------------+
+| first_name | last_name    | address                         | district   | city           | country_id | phone        |
++------------+--------------+---------------------------------+------------+----------------+------------+--------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               | Alberta    | Lethbridge     |         20 |              |
+| ED         | CHASE        | 28 MySQL Boulevard              | QLD        | Woodridge      |          8 |              |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               | Alberta    | Lethbridge     |         20 | 14033335568  |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            | QLD        | Woodridge      |          8 | 6172235589   |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  | Nagasaki   | Sasebo         |         50 | 28303384290  |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                | California | San Bernardino |        103 | 838635286649 |
+| BETTE      | NICHOLSON    | 692 Joliet Street               | Attika     | Athenai        |         39 | 448477190408 |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                | Mandalay   | Myingyan       |         64 | 705814003527 |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 | Nantou     | Nantou         |         92 | 10655648674  |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way | Texas      | Laredo         |        103 | 860452626434 |
++------------+--------------+---------------------------------+------------+----------------+------------+--------------+
+10 rows in set (0.00 sec)
+mysql> select * from country limit 10;
++------------+----------------+---------------------+
+| country_id | country        | last_update         |
++------------+----------------+---------------------+
+|          1 | Afghanistan    | 2020-07-30 18:07:53 |
+|          2 | Algeria        | 2020-07-30 18:07:53 |
+|          3 | American Samoa | 2020-07-30 18:07:53 |
+|          4 | Angola         | 2020-07-30 18:07:53 |
+|          5 | Anguilla       | 2020-07-30 18:07:53 |
+|          6 | Argentina      | 2020-07-30 18:07:53 |
+|          7 | Armenia        | 2020-07-30 18:07:53 |
+|          8 | Australia      | 2020-07-30 18:07:53 |
+|          9 | Austria        | 2020-07-30 18:07:53 |
+|         10 | Azerbaijan     | 2020-07-30 18:07:53 |
++------------+----------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_lco_films |
++---------------------+
+| actor               |
+| address             |
+| category            |
+| city                |
+| country             |
+| film                |
+| film_actor          |
+| film_category       |
+| language            |
++---------------------+
+9 rows in set (0.00 sec)
+mysql> select * from address limit 10;
++------------+---------------------------------+----------+------------+---------+-------------+--------------+---------------------+
+| address_id | address                         | address2 | district   | city_id | postal_code | phone        | last_update         |
++------------+---------------------------------+----------+------------+---------+-------------+--------------+---------------------+
+|          1 | 47 MySakila Drive               | NULL     | Alberta    |     300 |             |              | 2020-07-30 18:07:51 |
+|          2 | 28 MySQL Boulevard              | NULL     | QLD        |     576 |             |              | 2020-07-30 18:07:51 |
+|          3 | 23 Workhaven Lane               | NULL     | Alberta    |     300 |             | 14033335568  | 2020-07-30 18:07:51 |
+|          4 | 1411 Lillydale Drive            | NULL     | QLD        |     576 |             | 6172235589   | 2020-07-30 18:07:51 |
+|          5 | 1913 Hanoi Way                  |          | Nagasaki   |     463 | 35200       | 28303384290  | 2020-07-30 18:07:51 |
+|          6 | 1121 Loja Avenue                |          | California |     449 | 17886       | 838635286649 | 2020-07-30 18:07:51 |
+|          7 | 692 Joliet Street               |          | Attika     |      38 | 83579       | 448477190408 | 2020-07-30 18:07:51 |
+|          8 | 1566 Inegl Manor                |          | Mandalay   |     349 | 53561       | 705814003527 | 2020-07-30 18:07:51 |
+|          9 | 53 Idfu Parkway                 |          | Nantou     |     361 | 42399       | 10655648674  | 2020-07-30 18:07:51 |
+|         10 | 1795 Santiago de Compostela Way |          | Texas      |     295 | 18743       | 860452626434 | 2020-07-30 18:07:51 |
++------------+---------------------------------+----------+------------+---------+-------------+--------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from address where distict = "texas";
+ERROR 1054 (42S22): Unknown column 'distict' in 'where clause'
+mysql> select * from address where district = "texas";
++------------+---------------------------------+----------+----------+---------+-------------+--------------+---------------------+
+| address_id | address                         | address2 | district | city_id | postal_code | phone        | last_update         |
++------------+---------------------------------+----------+----------+---------+-------------+--------------+---------------------+
+|         10 | 1795 Santiago de Compostela Way |          | Texas    |     295 | 18743       | 860452626434 | 2020-07-30 18:07:51 |
+|        122 | 333 Goinia Way                  |          | Texas    |     185 | 78625       | 909029256431 | 2020-07-30 18:07:51 |
+|        310 | 913 Coacalco de Berriozbal Loop |          | Texas    |      33 | 42141       | 262088367001 | 2020-07-30 18:07:51 |
+|        405 | 530 Lausanne Lane               |          | Texas    |     135 | 11067       | 775235029633 | 2020-07-30 18:07:51 |
+|        567 | 1894 Boa Vista Way              |          | Texas    |     178 | 77464       | 239357986667 | 2020-07-30 18:07:51 |
++------------+---------------------------------+----------+----------+---------+-------------+--------------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> select count(*) from address whrer district = "texas";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'district = "texas"' at line 1
+mysql> select count(*) from address whrer district = "texas";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'district = "texas"' at line 1
+mysql> select count(*) from address where district = "texas";
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select distinct district from address;
++----------------------+
+| district             |
++----------------------+
+| Alberta              |
+| QLD                  |
+| Nagasaki             |
+| California           |
+| Attika               |
+| Mandalay             |
+| Nantou               |
+| Texas                |
+| Central Serbia       |
+| Hamilton             |
+| Masqat               |
+| Esfahan              |
+| Kanagawa             |
+| Haryana              |
+| Osmaniye             |
+| Madhya Pradesh       |
+| England              |
+| Kalmykia             |
+| Kaduna               |
+| Northern Cape        |
+| Nothwest Border Prov |
+| Dhaka                |
+| Rabat-Sal-Zammour-Z  |
+| Liepaja              |
+| Crdoba               |
+| Sind                 |
+|                      |
+| Southern Mindanao    |
+| Bihar                |
+| Yamaguchi            |
+| Taipei               |
+| West Bengali         |
+| Uttar Pradesh        |
+| Piemonte             |
+| Okayama              |
+| Midi-Pyrnes          |
+| Markazi              |
+| Henan                |
+| Chisinau             |
+| Esprito Santo        |
+| Oriental             |
+| Yerevan              |
+| Nonthaburi           |
+| Tahiti               |
+| Lipetsk              |
+| Antofagasta          |
+| Moscow (City)        |
+| Cear                 |
+| Tatarstan            |
+| Mekka                |
+| Khartum              |
+| Galicia              |
+| Chiba                |
+| Moskova              |
+| Vaduz                |
+| Sarawak              |
+| Karnataka            |
+| Rajasthan            |
+| Basel-Stadt          |
+| Missouri             |
+| Nebraska             |
+| Sichuan              |
+| Cayenne              |
+| Skne ln              |
+| Hunan                |
+| Bchar                |
+| Eastern Visayas      |
+| National Capital Reg |
+| Chiayi               |
+| So Paulo             |
+| Changhwa             |
+| Pavlodar             |
+| Oyo & Osun           |
+| Mahajanga            |
+| Krim                 |
+| Gauteng              |
+| Puebla               |
+| Songkhla             |
+| Sucre                |
+| Cheju                |
+| Buenos Aires         |
+| Guangdong            |
+| Brunei and Muara     |
+| Gois                 |
+| Inner Mongolia       |
+| Caraga               |
+| Punjab               |
+| Georgia              |
+| Tete                 |
+| Abu Dhabi            |
+| Kyongsangbuk         |
+| Asir                 |
+| Ha Darom             |
+| Kwara & Kogi         |
+| Provence-Alpes-Cte   |
+| Funafuti             |
+| Ivanovo              |
+| Mxico                |
+| North West           |
+| Hubei                |
+| Distrito Federal     |
+| Nordrhein-Westfalen  |
+| Central Java         |
+| Gujarat              |
+| al-Qalyubiya         |
+| Risaralda            |
+| Lima                 |
+| Ktahya               |
+| Smolensk             |
+| Slaskie              |
+| Shandong             |
+| Taka-Karpatia        |
+| Free State           |
+| Coahuila de Zaragoza |
+| Maharashtra          |
+| Gelderland           |
+| Ynlin                |
+| Tennessee            |
+| Hiroshima            |
+| Scotland             |
+| Kilis                |
+| Minsk                |
+| Michigan             |
+| Saitama              |
+| Saint-Denis          |
+| Massachusetts        |
+| Michoacn de Ocampo   |
+| Assam                |
+| Jakarta Raya         |
+| Shanxi               |
+| Bern                 |
+| Ondo & Ekiti         |
+| Pyongyang-si         |
+| North Carolina       |
+| North Austria        |
+| Tel Aviv             |
+| Pays de la Loire     |
+| Gifu                 |
+| Adana                |
+| Xinxiang             |
+| Lilongwe             |
+| Gansu                |
+| Jiangxi              |
+| Perak                |
+| Batman               |
+| Steiermark           |
+| Miranda              |
+| Kerala               |
+| Skikda               |
+| Tamaulipas           |
+| Kirov                |
+| Noord-Brabant        |
+| Chaharmahal va Bakht |
+| Sumy                 |
+| Ontario              |
+| Tabora               |
+| Rostov-na-Donu       |
+| Nyanza               |
+| Tokyo-to             |
+| Baden-Wrttemberg     |
+| Jiangsu              |
+| Haiphong             |
+| Ahal                 |
+| Sulawesi Utara       |
+| Usak                 |
+| Alto Paran           |
+| Santa Catarina       |
+| Kitaa                |
+| Aden                 |
+| Jilin                |
+| Washington           |
+| Taizz                |
+| Haskovo              |
+| Kabol                |
+| Zanzibar West        |
+| Sisilia              |
+| Jaroslavl            |
+| Tamil Nadu           |
+| Asuncin              |
+| Saarland             |
+| Phnom Penh           |
+| Botosani             |
+| Qina                 |
+| Hawalli              |
+| Valle                |
+| Southern Tagalog     |
+| Chollanam            |
+| West Java            |
+| Fukushima            |
+| Hebei                |
+| Tucumn               |
+| Central Visayas      |
+| Kyonggi              |
+| Paran                |
+| Florida              |
+| Tianjin              |
+| Anhalt Sachsen       |
+| Miyazaki             |
+| Minas Gerais         |
+| Central Luzon        |
+| Sagaing              |
+| Sofala               |
+| Santiago             |
+| Cagayan Valley       |
+| Manab                |
+| Osaka                |
+| Severn Morava        |
+| Salzburg             |
+| Wielkopolskie        |
+| Guanajuato           |
+| Illinois             |
+| Bursa                |
+| East Azerbaidzan     |
+| Fujian               |
+| Ponce                |
+| Edo & Delta          |
+| Shiga                |
+| Kowloon and New Kowl |
+| Gurico               |
+| Virginia             |
+| Sharja               |
+| Baskimaa             |
+| Ohio                 |
+| Pietari              |
+| Pohjois-Pohjanmaa    |
+| Kaliningrad          |
+| Liaoning             |
+| Sanaa                |
+| Callao               |
+| Kedah                |
+| Rio de Janeiro       |
+| Lombardia            |
+| Kursk                |
+| Tabuk                |
+| Streymoyar           |
+| Kujawsko-Pomorskie   |
+| Tutuila              |
+| Central              |
+| Morelos              |
+| St George            |
+| Santa F              |
+| Baki                 |
+| Sumqayit             |
+| Sousse               |
+| Western Cape         |
+| Hanoi                |
+| Roraima              |
+| Baja California      |
+| Tongatapu            |
+| Adygea               |
+| Daugavpils           |
+| Tuvassia             |
+| Krasnojarsk          |
+| Nord-Ouest           |
+| Hidalgo              |
+| Shimane              |
+| Bratislava           |
+| Jharkhand            |
+| Arecibo              |
+| Centre               |
+| Par                  |
+| Jalisco              |
+| Okinawa              |
+| Balikesir            |
+| Andhra Pradesh       |
+| Chihuahua            |
+| East Java            |
+| Pernambuco           |
+| East Kasai           |
+| Kurgan               |
+| Kermanshah           |
+| New Hampshire        |
+| Namibe               |
+| Ibaragi              |
+| Hmelnytskyi          |
+| Shaba                |
+| Nakhon Sawan         |
+| Addis Abeba          |
+| Asturia              |
+| al-Qadarif           |
+| Rio Grande do Sul    |
+| Bretagne             |
+| St Thomas            |
+| Northern             |
+| Bauchi & Gombe       |
+| Utrecht              |
+| al-Sharqiya          |
+| Puerto Plata         |
+| Sawhaj               |
+| Oaxaca               |
+| Komi                 |
+| Nizni Novgorod       |
+| Chuquisaca           |
+| KwaZulu-Natal        |
+| Nampula              |
+| Northern Mindanao    |
+| British Colombia     |
+| La Romana            |
+| Copperbelt           |
+| Batna                |
+| Tartumaa             |
+| Baijeri              |
+| Kerman               |
+| Sinaloa              |
+| Zulia                |
+| La Paz               |
+| Ziguinchor           |
+| Caquet               |
+| Irkutsk              |
+| Nova Scotia          |
+| OHiggins             |
+| Hodeida              |
+| Nam Ha               |
+| Aceh                 |
+| Drenthe              |
+| Qubec                |
+| Gaziantep            |
+| Mwanza               |
+| Veracruz             |
+| Denizli              |
+| Ningxia              |
+| Stavropol            |
+| Baja California Sur  |
+| Boyac                |
+| al-Daqahliya         |
+| Istanbul             |
+| Chimborazo           |
+| Zufar                |
+| Apulia               |
+| Lubelskie            |
+| Nagano               |
+| Kalimantan Barat     |
+| Eskisehir            |
+| Volgograd            |
+| Heilongjiang         |
+| Coquimbo             |
+| Battambang           |
+| Sivas                |
+| Gumma                |
+| Khanh Hoa            |
+| Nghe An              |
+| Friuli-Venezia Giuli |
+| Mogiljov             |
+| Benguela             |
+| Mie                  |
+| Chari-Baguirmi       |
+| Kang-won             |
+| Colorado             |
+| Carabobo             |
+| Ruse                 |
+| Toscana              |
+| Sumatera Selatan     |
+| Tadla-Azilal         |
+| Hainan               |
+| Ishikawa             |
+| Zhejiang             |
+| Vojvodina            |
+| Vilna                |
+| Dolnoslaskie         |
+| Sokoto & Kebbi & Zam |
+| Bukarest             |
+| Huanuco              |
+| Tokat                |
+| Anzotegui            |
+| Mazowieckie          |
+| Qaraghandy           |
+| Kaohsiung            |
+| Campeche             |
+| Ninawa               |
+| Central Mindanao     |
+| Guerrero             |
+| Banjul               |
+| Loja                 |
+| al-Manama            |
+| Fejr                 |
+| West Greece          |
+| Piura                |
+| Vaud                 |
++----------------------+
+378 rows in set (0.00 sec)
+
+mysql> select district from address;
++----------------------+
+| district             |
++----------------------+
+| Alberta              |
+| QLD                  |
+| Alberta              |
+| QLD                  |
+| Nagasaki             |
+| California           |
+| Attika               |
+| Mandalay             |
+| Nantou               |
+| Texas                |
+| Central Serbia       |
+| Hamilton             |
+| Masqat               |
+| Esfahan              |
+| Kanagawa             |
+| Haryana              |
+| Osmaniye             |
+| California           |
+| Madhya Pradesh       |
+| England              |
+| Kalmykia             |
+| Kaduna               |
+| Northern Cape        |
+| Nothwest Border Prov |
+| Dhaka                |
+| Rabat-Sal-Zammour-Z  |
+| Liepaja              |
+| Crdoba               |
+| Sind                 |
+|                      |
+| Southern Mindanao    |
+| Bihar                |
+| Yamaguchi            |
+| Taipei               |
+| West Bengali         |
+| Uttar Pradesh        |
+| Piemonte             |
+| Okayama              |
+| Midi-Pyrnes          |
+| Markazi              |
+| Henan                |
+| Chisinau             |
+| Esprito Santo        |
+| Oriental             |
+| Yerevan              |
+| Nonthaburi           |
+| Tahiti               |
+| Lipetsk              |
+| Antofagasta          |
+| Moscow (City)        |
+| Cear                 |
+| Tatarstan            |
+| Mekka                |
+| Khartum              |
+| California           |
+| Galicia              |
+| Chiba                |
+| Yamaguchi            |
+| Moskova              |
+| Tahiti               |
+| Vaduz                |
+| Sarawak              |
+| Karnataka            |
+| Rajasthan            |
+| Basel-Stadt          |
+| Missouri             |
+| Nebraska             |
+| Sichuan              |
+| Cayenne              |
+| Skne ln              |
+| Hunan                |
+| Madhya Pradesh       |
+| Bchar                |
+| Mekka                |
+| Eastern Visayas      |
+| National Capital Reg |
+| Chiayi               |
+| So Paulo             |
+| Changhwa             |
+| Pavlodar             |
+| So Paulo             |
+| Uttar Pradesh        |
+| Kanagawa             |
+| Oyo & Osun           |
+| Mahajanga            |
+| Krim                 |
+| Gauteng              |
+| Puebla               |
+| England              |
+| Songkhla             |
+| Sucre                |
+| Cheju                |
+| Buenos Aires         |
+| Guangdong            |
+| Brunei and Muara     |
+| Gois                 |
+| Inner Mongolia       |
+| Caraga               |
+| Punjab               |
+| Georgia              |
+| Tete                 |
+| Abu Dhabi            |
+| Kyongsangbuk         |
+| Lipetsk              |
+| Asir                 |
+| Ha Darom             |
+| Kwara & Kogi         |
+| Provence-Alpes-Cte   |
+| Funafuti             |
+| Ivanovo              |
+| Buenos Aires         |
+| Mxico                |
+| North West           |
+| Hubei                |
+| Distrito Federal     |
+| California           |
+| Sucre                |
+| Nordrhein-Westfalen  |
+| Mxico                |
+| Central Java         |
+| Gujarat              |
+| Texas                |
+| al-Qalyubiya         |
+| Risaralda            |
+| Uttar Pradesh        |
+| Lima                 |
+| Uttar Pradesh        |
+| Ktahya               |
+| Gauteng              |
+| So Paulo             |
+| Smolensk             |
+| Slaskie              |
+| Shandong             |
+| Gois                 |
+| Taka-Karpatia        |
+| Free State           |
+| Coahuila de Zaragoza |
+| al-Qalyubiya         |
+| Maharashtra          |
+| Karnataka            |
+| Gelderland           |
+| Inner Mongolia       |
+| Ynlin                |
+| Tennessee            |
+| Hiroshima            |
+| Scotland             |
+| Kilis                |
+| Minsk                |
+| Gauteng              |
+| Michigan             |
+| Saitama              |
+| Saint-Denis          |
+| Massachusetts        |
+| Michoacn de Ocampo   |
+| Shandong             |
+| Assam                |
+| Jakarta Raya         |
+| Shanxi               |
+| Bern                 |
+| Ondo & Ekiti         |
+| Pyongyang-si         |
+| North Carolina       |
+| North Austria        |
+| Moskova              |
+| Tel Aviv             |
+| Pays de la Loire     |
+| Gifu                 |
+| Adana                |
+| Xinxiang             |
+| Lilongwe             |
+| Maharashtra          |
+| Gansu                |
+| Jiangxi              |
+| Rajasthan            |
+| Perak                |
+| Batman               |
+| Steiermark           |
+| Miranda              |
+| Kerala               |
+| Skikda               |
+| Tamaulipas           |
+| So Paulo             |
+| Kirov                |
+| Risaralda            |
+| Tennessee            |
+| California           |
+| Gois                 |
+| Noord-Brabant        |
+| Chaharmahal va Bakht |
+| West Bengali         |
+| Sumy                 |
+| Caraga               |
+| Ontario              |
+| Tabora               |
+| Rostov-na-Donu       |
+| Uttar Pradesh        |
+| Nyanza               |
+| Tokyo-to             |
+| Nordrhein-Westfalen  |
+| Baden-Wrttemberg     |
+| Jiangsu              |
+| Ondo & Ekiti         |
+| Haiphong             |
+| Ahal                 |
+| Nordrhein-Westfalen  |
+| Maharashtra          |
+| Sulawesi Utara       |
+| Usak                 |
+| Alto Paran           |
+| Santa Catarina       |
+| Kitaa                |
+| West Bengali         |
+| Rajasthan            |
+| Aden                 |
+| Jilin                |
+| Washington           |
+| Taizz                |
+| California           |
+| Haskovo              |
+| Gois                 |
+| Uttar Pradesh        |
+| Kabol                |
+| Buenos Aires         |
+| Zanzibar West        |
+| Sisilia              |
+| Jaroslavl            |
+| Punjab               |
+| Rajasthan            |
+| Tamil Nadu           |
+| Asuncin              |
+| Saarland             |
+| Phnom Penh           |
+| Gois                 |
+| Botosani             |
+| West Bengali         |
+| Kaduna               |
+| Qina                 |
+| Hawalli              |
+| Valle                |
+| Southern Tagalog     |
+| Chollanam            |
+| Karnataka            |
+| West Java            |
+| Fukushima            |
+| Hubei                |
+| Hebei                |
+| Tucumn               |
+| Central Visayas      |
+| Kyonggi              |
+| Paran                |
+| Mxico                |
+| Florida              |
+| Tianjin              |
+| Oyo & Osun           |
+| Anhalt Sachsen       |
+| England              |
+| Miyazaki             |
+| Minas Gerais         |
+| Central Luzon        |
+| Sagaing              |
+| Sofala               |
+| Santiago             |
+| West Bengali         |
+| Shanxi               |
+| Cagayan Valley       |
+| Manab                |
+| National Capital Reg |
+| Osaka                |
+| Severn Morava        |
+| Salzburg             |
+| Hunan                |
+| Kerala               |
+| California           |
+| Wielkopolskie        |
+| Tamil Nadu           |
+| Shandong             |
+| Guanajuato           |
+| Haryana              |
+| Illinois             |
+| Michigan             |
+| Oyo & Osun           |
+| Bursa                |
+| East Azerbaidzan     |
+| Ondo & Ekiti         |
+| Fujian               |
+| Ponce                |
+| Xinxiang             |
+| Edo & Delta          |
+| Shiga                |
+| Oyo & Osun           |
+| Tamil Nadu           |
+| Guanajuato           |
+| Kowloon and New Kowl |
+| Gurico               |
+| Virginia             |
+| Sharja               |
+| Baskimaa             |
+| Ohio                 |
+| Pietari              |
+| Punjab               |
+| Maharashtra          |
+| Pohjois-Pohjanmaa    |
+| Hiroshima            |
+| Maharashtra          |
+| Kaliningrad          |
+| Liaoning             |
+| Sanaa                |
+| Callao               |
+| Texas                |
+| Kedah                |
+| Rio de Janeiro       |
+| Missouri             |
+| Lombardia            |
+| Minas Gerais         |
+| Kursk                |
+| Tabuk                |
+| Hubei                |
+| So Paulo             |
+| Tel Aviv             |
+| Maharashtra          |
+| Streymoyar           |
+| Kujawsko-Pomorskie   |
+| Mxico                |
+| Tutuila              |
+| Central              |
+| Buenos Aires         |
+| Morelos              |
+| Henan                |
+| Distrito Federal     |
+| St George            |
+| Adana                |
+| West Java            |
+| Dhaka                |
+| Illinois             |
+| Santa F              |
+| Dhaka                |
+| Baki                 |
+| Sumqayit             |
+| Sousse               |
+| Uttar Pradesh        |
+| Hiroshima            |
+| Western Cape         |
+| Henan                |
+| Hanoi                |
+| Gelderland           |
+| Roraima              |
+| Baja California      |
+| Tongatapu            |
+| Central              |
+| Adygea               |
+| Daugavpils           |
+| Taipei               |
+| Southern Tagalog     |
+| Tuvassia             |
+| Krasnojarsk          |
+| Nord-Ouest           |
+| Hidalgo              |
+| So Paulo             |
+| Shimane              |
+| Madhya Pradesh       |
+| Bratislava           |
+| Jharkhand            |
+| Buenos Aires         |
+| Arecibo              |
+| Centre               |
+| Par                  |
+| Central              |
+| Jalisco              |
+| Okinawa              |
+| Balikesir            |
+| Andhra Pradesh       |
+| Esfahan              |
+| Chihuahua            |
+| Karnataka            |
+| Southern Tagalog     |
+| East Java            |
+| Southern Tagalog     |
+| Pernambuco           |
+| East Kasai           |
+| Kurgan               |
+| Kermanshah           |
+| Guangdong            |
+| Gujarat              |
+| Slaskie              |
+|                      |
+| New Hampshire        |
+| Namibe               |
+| Jiangsu              |
+| Ibaragi              |
+| Hmelnytskyi          |
+| Shaba                |
+| Southern Tagalog     |
+| Sichuan              |
+| Nakhon Sawan         |
+| Osaka                |
+| Addis Abeba          |
+| Moskova              |
+| Asturia              |
+| al-Qadarif           |
+| Saitama              |
+| Krasnojarsk          |
+| Rio Grande do Sul    |
+| Punjab               |
+| Texas                |
+| Fukushima            |
+| Bretagne             |
+| Tamil Nadu           |
+| Saitama              |
+| Buenos Aires         |
+| St Thomas            |
+| North West           |
+| Northern             |
+| Bauchi & Gombe       |
+| Ontario              |
+| West Java            |
+| Punjab               |
+| West Bengali         |
+| Guanajuato           |
+| Utrecht              |
+| Sind                 |
+| al-Sharqiya          |
+| Puerto Plata         |
+| Bihar                |
+| California           |
+| Tamil Nadu           |
+| Hubei                |
+| Sawhaj               |
+| Guangdong            |
+| Oaxaca               |
+| Jharkhand            |
+| So Paulo             |
+| Komi                 |
+| Okayama              |
+| Nizni Novgorod       |
+| Chuquisaca           |
+| KwaZulu-Natal        |
+| Nampula              |
+| Northern Mindanao    |
+| Shandong             |
+| British Colombia     |
+| La Romana            |
+| Copperbelt           |
+| Lombardia            |
+| Maharashtra          |
+| Batna                |
+| Inner Mongolia       |
+| Rio Grande do Sul    |
+| Tartumaa             |
+| Buenos Aires         |
+| West Bengali         |
+| Tatarstan            |
+| Baijeri              |
+| Kerman               |
+| Central Java         |
+| Sinaloa              |
+| Abu Dhabi            |
+| Zulia                |
+| Michoacn de Ocampo   |
+| La Paz               |
+| Ziguinchor           |
+| Illinois             |
+| Central Java         |
+| Esfahan              |
+| Caquet               |
+| Northern Mindanao    |
+| Irkutsk              |
+| Nova Scotia          |
+| OHiggins             |
+| Jalisco              |
+| Shandong             |
+| Chihuahua            |
+| Karnataka            |
+| Galicia              |
+| Hodeida              |
+| Gauteng              |
+| Nam Ha               |
+| Aceh                 |
+| Drenthe              |
+| Sumy                 |
+| Qubec                |
+| England              |
+| Ha Darom             |
+| Ohio                 |
+| Gaziantep            |
+| Mwanza               |
+| Veracruz             |
+| Denizli              |
+| Ningxia              |
+| Guangdong            |
+| Coahuila de Zaragoza |
+| Stavropol            |
+| Baja California Sur  |
+| Okayama              |
+| Boyac                |
+| al-Daqahliya         |
+| West Bengali         |
+| Istanbul             |
+| Chimborazo           |
+| Gansu                |
+| Shandong             |
+| England              |
+| Zufar                |
+| Apulia               |
+| East Java            |
+| Lubelskie            |
+| West Bengali         |
+| Nagano               |
+| Illinois             |
+| Central Luzon        |
+| Kalimantan Barat     |
+| Eskisehir            |
+| Andhra Pradesh       |
+| Bihar                |
+| Volgograd            |
+| Heilongjiang         |
+| Ontario              |
+|                      |
+| Hubei                |
+| Coquimbo             |
+| Battambang           |
+| Taipei               |
+| Sivas                |
+| Gumma                |
+| Khanh Hoa            |
+| Liaoning             |
+| Southern Tagalog     |
+| Nghe An              |
+| West Java            |
+| Friuli-Venezia Giuli |
+| Florida              |
+| Mogiljov             |
+| Benguela             |
+| Andhra Pradesh       |
+| Buenos Aires         |
+| Mie                  |
+| Khanh Hoa            |
+| Shandong             |
+| Uttar Pradesh        |
+| Chari-Baguirmi       |
+| Kang-won             |
+| Colorado             |
+| Jilin                |
+| Carabobo             |
+| Ruse                 |
+| Toscana              |
+| Sumatera Selatan     |
+| Tadla-Azilal         |
+| So Paulo             |
+| Sumy                 |
+| Hainan               |
+| Ishikawa             |
+| Central Luzon        |
+| Galicia              |
+| Zhejiang             |
+| Rio Grande do Sul    |
+| Zhejiang             |
+| Vojvodina            |
+| Gujarat              |
+| KwaZulu-Natal        |
+| England              |
+| Vilna                |
+| Dolnoslaskie         |
+| al-Sharqiya          |
+| Buenos Aires         |
+| Texas                |
+| Sokoto & Kebbi & Zam |
+| Bukarest             |
+| Shandong             |
+| Huanuco              |
+| Tokat                |
+| Moskova              |
+| Anzotegui            |
+| Sichuan              |
+| Coahuila de Zaragoza |
+| Mazowieckie          |
+| Slaskie              |
+| Qaraghandy           |
+| Tokyo-to             |
+| Morelos              |
+| Kaohsiung            |
+| Taipei               |
+| Campeche             |
+| Ninawa               |
+| Central Mindanao     |
+| Guerrero             |
+| Hidalgo              |
+| England              |
+| Banjul               |
+| Buenos Aires         |
+| Nantou               |
+| Guanajuato           |
+| Shandong             |
+| Loja                 |
+| al-Manama            |
+| Minas Gerais         |
+| Fejr                 |
+| California           |
+| Inner Mongolia       |
+| Liaoning             |
+| West Greece          |
+| Piura                |
+| Vaud                 |
+| Heilongjiang         |
++----------------------+
+603 rows in set (0.00 sec)
+
+mysql> select count(*), district from address group by district;
++----------+----------------------+
+| count(*) | district             |
++----------+----------------------+
+|        2 | Alberta              |
+|        2 | QLD                  |
+|        1 | Nagasaki             |
+|        9 | California           |
+|        1 | Attika               |
+|        1 | Mandalay             |
+|        2 | Nantou               |
+|        5 | Texas                |
+|        1 | Central Serbia       |
+|        1 | Hamilton             |
+|        1 | Masqat               |
+|        3 | Esfahan              |
+|        2 | Kanagawa             |
+|        2 | Haryana              |
+|        1 | Osmaniye             |
+|        3 | Madhya Pradesh       |
+|        7 | England              |
+|        1 | Kalmykia             |
+|        2 | Kaduna               |
+|        1 | Northern Cape        |
+|        1 | Nothwest Border Prov |
+|        3 | Dhaka                |
+|        1 | Rabat-Sal-Zammour-Z  |
+|        1 | Liepaja              |
+|        1 | Crdoba               |
+|        2 | Sind                 |
+|        3 |                      |
+|        1 | Southern Mindanao    |
+|        3 | Bihar                |
+|        2 | Yamaguchi            |
+|        4 | Taipei               |
+|        9 | West Bengali         |
+|        8 | Uttar Pradesh        |
+|        1 | Piemonte             |
+|        3 | Okayama              |
+|        1 | Midi-Pyrnes          |
+|        1 | Markazi              |
+|        3 | Henan                |
+|        1 | Chisinau             |
+|        1 | Esprito Santo        |
+|        1 | Oriental             |
+|        1 | Yerevan              |
+|        1 | Nonthaburi           |
+|        2 | Tahiti               |
+|        2 | Lipetsk              |
+|        1 | Antofagasta          |
+|        1 | Moscow (City)        |
+|        1 | Cear                 |
+|        2 | Tatarstan            |
+|        2 | Mekka                |
+|        1 | Khartum              |
+|        3 | Galicia              |
+|        1 | Chiba                |
+|        4 | Moskova              |
+|        1 | Vaduz                |
+|        1 | Sarawak              |
+|        5 | Karnataka            |
+|        4 | Rajasthan            |
+|        1 | Basel-Stadt          |
+|        2 | Missouri             |
+|        1 | Nebraska             |
+|        3 | Sichuan              |
+|        1 | Cayenne              |
+|        1 | Skne ln              |
+|        2 | Hunan                |
+|        1 | Bchar                |
+|        1 | Eastern Visayas      |
+|        2 | National Capital Reg |
+|        1 | Chiayi               |
+|        8 | So Paulo             |
+|        1 | Changhwa             |
+|        1 | Pavlodar             |
+|        4 | Oyo & Osun           |
+|        1 | Mahajanga            |
+|        1 | Krim                 |
+|        4 | Gauteng              |
+|        1 | Puebla               |
+|        1 | Songkhla             |
+|        2 | Sucre                |
+|        1 | Cheju                |
+|       10 | Buenos Aires         |
+|        4 | Guangdong            |
+|        1 | Brunei and Muara     |
+|        5 | Gois                 |
+|        4 | Inner Mongolia       |
+|        2 | Caraga               |
+|        5 | Punjab               |
+|        1 | Georgia              |
+|        1 | Tete                 |
+|        2 | Abu Dhabi            |
+|        1 | Kyongsangbuk         |
+|        1 | Asir                 |
+|        2 | Ha Darom             |
+|        1 | Kwara & Kogi         |
+|        1 | Provence-Alpes-Cte   |
+|        1 | Funafuti             |
+|        1 | Ivanovo              |
+|        4 | Mxico                |
+|        2 | North West           |
+|        5 | Hubei                |
+|        2 | Distrito Federal     |
+|        3 | Nordrhein-Westfalen  |
+|        3 | Central Java         |
+|        3 | Gujarat              |
+|        2 | al-Qalyubiya         |
+|        2 | Risaralda            |
+|        1 | Lima                 |
+|        1 | Ktahya               |
+|        1 | Smolensk             |
+|        3 | Slaskie              |
+|        9 | Shandong             |
+|        1 | Taka-Karpatia        |
+|        1 | Free State           |
+|        3 | Coahuila de Zaragoza |
+|        7 | Maharashtra          |
+|        2 | Gelderland           |
+|        1 | Ynlin                |
+|        2 | Tennessee            |
+|        3 | Hiroshima            |
+|        1 | Scotland             |
+|        1 | Kilis                |
+|        1 | Minsk                |
+|        2 | Michigan             |
+|        3 | Saitama              |
+|        1 | Saint-Denis          |
+|        1 | Massachusetts        |
+|        2 | Michoacn de Ocampo   |
+|        1 | Assam                |
+|        1 | Jakarta Raya         |
+|        2 | Shanxi               |
+|        1 | Bern                 |
+|        3 | Ondo & Ekiti         |
+|        1 | Pyongyang-si         |
+|        1 | North Carolina       |
+|        1 | North Austria        |
+|        2 | Tel Aviv             |
+|        1 | Pays de la Loire     |
+|        1 | Gifu                 |
+|        2 | Adana                |
+|        2 | Xinxiang             |
+|        1 | Lilongwe             |
+|        2 | Gansu                |
+|        1 | Jiangxi              |
+|        1 | Perak                |
+|        1 | Batman               |
+|        1 | Steiermark           |
+|        1 | Miranda              |
+|        2 | Kerala               |
+|        1 | Skikda               |
+|        1 | Tamaulipas           |
+|        1 | Kirov                |
+|        1 | Noord-Brabant        |
+|        1 | Chaharmahal va Bakht |
+|        3 | Sumy                 |
+|        3 | Ontario              |
+|        1 | Tabora               |
+|        1 | Rostov-na-Donu       |
+|        1 | Nyanza               |
+|        2 | Tokyo-to             |
+|        1 | Baden-Wrttemberg     |
+|        2 | Jiangsu              |
+|        1 | Haiphong             |
+|        1 | Ahal                 |
+|        1 | Sulawesi Utara       |
+|        1 | Usak                 |
+|        1 | Alto Paran           |
+|        1 | Santa Catarina       |
+|        1 | Kitaa                |
+|        1 | Aden                 |
+|        2 | Jilin                |
+|        1 | Washington           |
+|        1 | Taizz                |
+|        1 | Haskovo              |
+|        1 | Kabol                |
+|        1 | Zanzibar West        |
+|        1 | Sisilia              |
+|        1 | Jaroslavl            |
+|        5 | Tamil Nadu           |
+|        1 | Asuncin              |
+|        1 | Saarland             |
+|        1 | Phnom Penh           |
+|        1 | Botosani             |
+|        1 | Qina                 |
+|        1 | Hawalli              |
+|        1 | Valle                |
+|        6 | Southern Tagalog     |
+|        1 | Chollanam            |
+|        4 | West Java            |
+|        2 | Fukushima            |
+|        1 | Hebei                |
+|        1 | Tucumn               |
+|        1 | Central Visayas      |
+|        1 | Kyonggi              |
+|        1 | Paran                |
+|        2 | Florida              |
+|        1 | Tianjin              |
+|        1 | Anhalt Sachsen       |
+|        1 | Miyazaki             |
+|        3 | Minas Gerais         |
+|        3 | Central Luzon        |
+|        1 | Sagaing              |
+|        1 | Sofala               |
+|        1 | Santiago             |
+|        1 | Cagayan Valley       |
+|        1 | Manab                |
+|        2 | Osaka                |
+|        1 | Severn Morava        |
+|        1 | Salzburg             |
+|        1 | Wielkopolskie        |
+|        4 | Guanajuato           |
+|        4 | Illinois             |
+|        1 | Bursa                |
+|        1 | East Azerbaidzan     |
+|        1 | Fujian               |
+|        1 | Ponce                |
+|        1 | Edo & Delta          |
+|        1 | Shiga                |
+|        1 | Kowloon and New Kowl |
+|        1 | Gurico               |
+|        1 | Virginia             |
+|        1 | Sharja               |
+|        1 | Baskimaa             |
+|        2 | Ohio                 |
+|        1 | Pietari              |
+|        1 | Pohjois-Pohjanmaa    |
+|        1 | Kaliningrad          |
+|        3 | Liaoning             |
+|        1 | Sanaa                |
+|        1 | Callao               |
+|        1 | Kedah                |
+|        1 | Rio de Janeiro       |
+|        2 | Lombardia            |
+|        1 | Kursk                |
+|        1 | Tabuk                |
+|        1 | Streymoyar           |
+|        1 | Kujawsko-Pomorskie   |
+|        1 | Tutuila              |
+|        3 | Central              |
+|        2 | Morelos              |
+|        1 | St George            |
+|        1 | Santa F              |
+|        1 | Baki                 |
+|        1 | Sumqayit             |
+|        1 | Sousse               |
+|        1 | Western Cape         |
+|        1 | Hanoi                |
+|        1 | Roraima              |
+|        1 | Baja California      |
+|        1 | Tongatapu            |
+|        1 | Adygea               |
+|        1 | Daugavpils           |
+|        1 | Tuvassia             |
+|        2 | Krasnojarsk          |
+|        1 | Nord-Ouest           |
+|        2 | Hidalgo              |
+|        1 | Shimane              |
+|        1 | Bratislava           |
+|        2 | Jharkhand            |
+|        1 | Arecibo              |
+|        1 | Centre               |
+|        1 | Par                  |
+|        2 | Jalisco              |
+|        1 | Okinawa              |
+|        1 | Balikesir            |
+|        3 | Andhra Pradesh       |
+|        2 | Chihuahua            |
+|        2 | East Java            |
+|        1 | Pernambuco           |
+|        1 | East Kasai           |
+|        1 | Kurgan               |
+|        1 | Kermanshah           |
+|        1 | New Hampshire        |
+|        1 | Namibe               |
+|        1 | Ibaragi              |
+|        1 | Hmelnytskyi          |
+|        1 | Shaba                |
+|        1 | Nakhon Sawan         |
+|        1 | Addis Abeba          |
+|        1 | Asturia              |
+|        1 | al-Qadarif           |
+|        3 | Rio Grande do Sul    |
+|        1 | Bretagne             |
+|        1 | St Thomas            |
+|        1 | Northern             |
+|        1 | Bauchi & Gombe       |
+|        1 | Utrecht              |
+|        2 | al-Sharqiya          |
+|        1 | Puerto Plata         |
+|        1 | Sawhaj               |
+|        1 | Oaxaca               |
+|        1 | Komi                 |
+|        1 | Nizni Novgorod       |
+|        1 | Chuquisaca           |
+|        2 | KwaZulu-Natal        |
+|        1 | Nampula              |
+|        2 | Northern Mindanao    |
+|        1 | British Colombia     |
+|        1 | La Romana            |
+|        1 | Copperbelt           |
+|        1 | Batna                |
+|        1 | Tartumaa             |
+|        1 | Baijeri              |
+|        1 | Kerman               |
+|        1 | Sinaloa              |
+|        1 | Zulia                |
+|        1 | La Paz               |
+|        1 | Ziguinchor           |
+|        1 | Caquet               |
+|        1 | Irkutsk              |
+|        1 | Nova Scotia          |
+|        1 | OHiggins             |
+|        1 | Hodeida              |
+|        1 | Nam Ha               |
+|        1 | Aceh                 |
+|        1 | Drenthe              |
+|        1 | Qubec                |
+|        1 | Gaziantep            |
+|        1 | Mwanza               |
+|        1 | Veracruz             |
+|        1 | Denizli              |
+|        1 | Ningxia              |
+|        1 | Stavropol            |
+|        1 | Baja California Sur  |
+|        1 | Boyac                |
+|        1 | al-Daqahliya         |
+|        1 | Istanbul             |
+|        1 | Chimborazo           |
+|        1 | Zufar                |
+|        1 | Apulia               |
+|        1 | Lubelskie            |
+|        1 | Nagano               |
+|        1 | Kalimantan Barat     |
+|        1 | Eskisehir            |
+|        1 | Volgograd            |
+|        2 | Heilongjiang         |
+|        1 | Coquimbo             |
+|        1 | Battambang           |
+|        1 | Sivas                |
+|        1 | Gumma                |
+|        2 | Khanh Hoa            |
+|        1 | Nghe An              |
+|        1 | Friuli-Venezia Giuli |
+|        1 | Mogiljov             |
+|        1 | Benguela             |
+|        1 | Mie                  |
+|        1 | Chari-Baguirmi       |
+|        1 | Kang-won             |
+|        1 | Colorado             |
+|        1 | Carabobo             |
+|        1 | Ruse                 |
+|        1 | Toscana              |
+|        1 | Sumatera Selatan     |
+|        1 | Tadla-Azilal         |
+|        1 | Hainan               |
+|        1 | Ishikawa             |
+|        2 | Zhejiang             |
+|        1 | Vojvodina            |
+|        1 | Vilna                |
+|        1 | Dolnoslaskie         |
+|        1 | Sokoto & Kebbi & Zam |
+|        1 | Bukarest             |
+|        1 | Huanuco              |
+|        1 | Tokat                |
+|        1 | Anzotegui            |
+|        1 | Mazowieckie          |
+|        1 | Qaraghandy           |
+|        1 | Kaohsiung            |
+|        1 | Campeche             |
+|        1 | Ninawa               |
+|        1 | Central Mindanao     |
+|        1 | Guerrero             |
+|        1 | Banjul               |
+|        1 | Loja                 |
+|        1 | al-Manama            |
+|        1 | Fejr                 |
+|        1 | West Greece          |
+|        1 | Piura                |
+|        1 | Vaud                 |
++----------+----------------------+
+378 rows in set (0.00 sec)
